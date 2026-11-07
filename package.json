@@ -1,0 +1,26 @@
+{
+  "name": "pom-erp-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "Single-data": "npx playwright/test tests/ERPSingledata.spec.ts",
+    "Allure-Reports": "npx allure serve allure-results",
+    "Using-JsonFile": "npx playwright/test tests/multipledatausingjsonfile.sepc.ts",
+    "Using-Excel": "npx playwright test tests/multipledatausingexcelfile.spec.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.14.0",
+    "dotenv": "^18.0.9"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
