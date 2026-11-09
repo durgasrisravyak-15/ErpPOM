@@ -25,8 +25,8 @@ export class AddSuppliers{
     SuppilerTable: Locator
     constructor(page:Page){
         this.page=page
-        this.clickSuppliers = page.getByRole('link',{name :'Suppliers' })
-        this.clickAddIcon = page.getByRole('link',{name: '+', description: 'Add' })
+        this.clickSuppliers = page.locator('li#mi_a_suppliers')
+        this.clickAddIcon = page.locator("span[data-caption='Add']").first()
         this.SupplierNumber = page.locator('#x_Supplier_Number')
         this.SupplierName = page.locator('#x_Supplier_Name')
         this.SAddress = page.locator('#x_Address')   

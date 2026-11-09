@@ -21,17 +21,17 @@ test.describe('ERP multiple data',()=>{
     //test for supplier module
     for(const sup of data.suppliers)
     {
-        test(`validate supplier ${sup.Suppliername}`, async({page})=>{
+        test(`validate supplier ${sup.SupplierName}`, async({page})=>{
             supplier = new AddSuppliers(page)
             await supplier.addSupplierDetails(
-                sup.Suppliername,
+                sup.SupplierName,
                 sup.Address,
-                sup.city,
-                sup.country,
-                sup.contactPerson,
-                sup.phonenumber,
+                sup.City,
+                sup.Country,
+                sup.ContactPerson,
+                sup.PhoneNumber,
                 sup.Email,
-                sup.mobilenumber,
+                sup.MobileNumber,
                 sup.Notes
             )
                 

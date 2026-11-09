@@ -1,31 +1,32 @@
 {
-    "suppliers":[
-        {
-           "Suppliername":"sri",
-           "Address":"string",
-           "city":" london",
-           "country":"uk",
-           "contactPerson":"sravya",
-            "phonenumber":"string",
-            "Email": "test@gmal.com",
-            "mobilenumber": "12344090",
-            "Notes": "testing 121"
-        },
-        {
-           "Suppliername":"srei",
-           "Address":"string111",
-           "city":" lndon",
-           "country":"uk",
-           "contactPerson":"sravy1a",
-            "phonenumber":"string",
-            "Email": "test@gmal.com",
-            "mobilenumber": "1234224090",
-            "Notes": "testing 1e21" 
-        }
-    ], 
-    "customers": [
+  "suppliers": [
     {
-      "CustomerName": "Ranga",
+      "SupplierName": "John",
+      "Address": "USA",
+      "City": "London",
+      "Country": "UK",
+      "ContactPerson": "Qedge",
+      "PhoneNumber": "876543",
+      "Email": "john@gmail.com",
+      "MobileNumber": "765432",
+      "Notes": "Added Supplier"
+    },
+    {
+      "SupplierName": "David",
+      "Address": "New York",
+      "City": "New York",
+      "Country": "USA",
+      "ContactPerson": "Smith",
+      "PhoneNumber": "99887766",
+      "Email": "david@gmail.com",
+      "MobileNumber": "88990011",
+      "Notes": "Supplier Two"
+    }
+  ],
+
+  "customers": [
+    {
+      "CustomerName": "Test123",
       "Address": "SR Nagar",
       "City": "Hyderabad",
       "Country": "India",

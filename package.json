@@ -6,8 +6,8 @@
   "scripts": {
     "Single-data": "npx playwright/test tests/ERPSingledata.spec.ts",
     "Allure-Reports": "npx allure serve allure-results",
-    "Using-JsonFile": "npx playwright/test tests/multipledatausingjsonfile.sepc.ts",
-    "Using-Excel": "npx playwright test tests/multipledatausingexcelfile.spec.ts"
+    "Using-JsonFile": "npx playwright test tests/multipledatausingjsonfile.spec.ts",
+    "Using-Excel": "npx playwright test tests/multipledatausingexcelfile.spec.ts" 
   },
   "keywords": [],
   "author": "",
