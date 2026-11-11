@@ -23,7 +23,7 @@ test.describe('ERP multiple data',()=>{
     {
         test(`validate supplier ${sup.SupplierName}`, async({page})=>{
             supplier = new AddSuppliers(page)
-            await supplier.addSupplierDetails(
+            await supplier.addSupplierDeatils(
                 sup.SupplierName,
                 sup.Address,
                 sup.City,
@@ -41,7 +41,7 @@ test.describe('ERP multiple data',()=>{
     for(const cus1 of data.customers){
         test(`validate customer ${cus1.CustomerName} `, async({page})=>{
             customer = new AddCustomers(page)
-            await customer.addCustomerDetails(
+            await customer.addCustomerDatials(
                 cus1.CustomerName,
                 cus1.Address,
                 cus1.City,

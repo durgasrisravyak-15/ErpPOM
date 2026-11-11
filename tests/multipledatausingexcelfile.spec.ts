@@ -33,7 +33,7 @@ test.describe('ERP Modules',()=>{
     for (const data of supdata) {
         test(`Supplier Multipedata ${data.SupplierName}`,async({page})=>{
            supplier = new AddSuppliers(page) 
-           await supplier.addSupplierDetails(
+           await supplier.addSupplierDeatils(
             data.SupplierName,
             data.Address,
             data.City,
@@ -50,7 +50,7 @@ test.describe('ERP Modules',()=>{
  for (const data of cusdata) {
     test(`Add customer ${data.CustomerName}`,async({page})=>{
        customer = new AddCustomers(page) 
-       await customer.addCustomerDetails(
+       await customer.addCustomerDatials(
         data.CustomerName,
         data.Address,
         data.City,

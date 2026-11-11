@@ -1,0 +1,112 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: multipledatausingjsonfile.spec.ts >> ERP multiple data >> validate customer Test123 
+- Location: tests\multipledatausingjsonfile.spec.ts:42:13
+
+# Error details
+
+```
+Error: locator.waitFor: Error: strict mode violation: getByRole('link', { name: '+', description: 'Add' }) resolved to 2 elements:
+    1) <a title="Add" data-caption="Add" href="a_customersadd.php?showdetail=" class="btn btn-default ewAddEdit ewAdd btn-sm">…</a> aka getByRole('link', { name: '+' }).first()
+    2) <a title="Add" data-caption="Add" href="a_customersadd.php?showdetail=" class="btn btn-default ewAddEdit ewAdd btn-sm">…</a> aka getByRole('link', { name: '+' }).nth(1)
+
+Call log:
+  - waiting for getByRole('link', { name: '+', description: 'Add' }) to be visible
+
+```
+
+# Test source
+
+```ts
+  1  | import { Locator, Page } from "@playwright/test"
+  2  | export class AddCustomers{
+  3  |     //declare variables for supplier module 
+  4  |         page: Page
+  5  |         clickCustomers: Locator
+  6  |         clickAddIcon: Locator
+  7  |         CustomerNumber: Locator
+  8  |         CustomerName: Locator
+  9  |         CAddress:Locator
+  10 |         Ccity: Locator
+  11 |         Ccountry: Locator
+  12 |         CcontactPerson: Locator
+  13 |         CphoneNum: Locator
+  14 |         CEmail: Locator
+  15 |         CmobileNum: Locator
+  16 |         CNotes: Locator
+  17 |         ClickAddBtn: Locator
+  18 |         ClickconfirmOk: Locator
+  19 |         clickAlertOk: Locator
+  20 |         searchPanel: Locator
+  21 |         searchTextBox: Locator
+  22 |         searchButton: Locator
+  23 |        CustomerTable: Locator
+  24 |        constructor(page:Page){
+  25 |         this.page=page
+  26 |         this.clickCustomers = page.getByRole('link', {name : 'Customers'})
+  27 |         this.clickAddIcon =page.getByRole('link',{name: '+' , description: 'Add'})
+  28 |         this.CustomerNumber= page.locator('#x_Customer_Number')
+  29 |         this.CustomerName = page.locator('#x_Customer_Name')
+  30 |         this.CAddress = page.locator('x_Address')
+  31 |         this.Ccity =page.locator('x_City')
+  32 |         this.Ccountry= page.locator('x_Country')
+  33 |         this.CcontactPerson = page.locator('#x_Contact_Person')
+  34 |         this.CphoneNum = page.locator('#x_Phone_Number')
+  35 |         this.CEmail = page.locator('#x__Email')
+  36 |         this.CmobileNum = page.locator('#x_Mobile_Number')
+  37 |         this.CNotes = page.locator('#x_Notes')
+  38 |         this.ClickAddBtn = page.locator('#btnAction')
+  39 |         this.ClickconfirmOk = page.getByText('OK!', {exact:true})
+  40 |         this.clickAlertOk = page.locator(".ajs-button.btn.btn-primary")
+  41 |         this.searchPanel = page.locator('.glyphicon.glyphicon-search.ewIcon')
+  42 |         this.searchTextBox = page.locator('#psearch')
+  43 |         this.searchButton = page.locator('#btnsubmit')
+  44 |         this.CustomerTable = page.locator('.table.ewTable tbody tr:nth-child(1) td:nth-child(5) div span span')
+  45 |        }
+  46 |        async addCustomerDetails(Cname:string, Address:string, city:string, country:string, 
+  47 |         cperson:string, pnumber:string, email:string, mnumber: string, notes:string ){
+  48 |             await this.clickCustomers.waitFor()
+  49 |             await this.clickCustomers.click()
+> 50 |             await this.clickAddIcon.waitFor()
+     |                                     ^ Error: locator.waitFor: Error: strict mode violation: getByRole('link', { name: '+', description: 'Add' }) resolved to 2 elements:
+  51 |             await this.clickAddIcon.click()
+  52 |             await this.CustomerNumber.waitFor()
+  53 |             const Ex_num2 = await this.CustomerNumber.inputValue()
+  54 |             await this.CustomerName.fill(Cname)
+  55 |             await this.CAddress.fill(Address)
+  56 |             await this.Ccity.fill(city)
+  57 |             await this.Ccountry.fill(country)
+  58 |             await this.CcontactPerson.fill(cperson)
+  59 |             await this.CphoneNum.fill(pnumber)
+  60 |             await this.CEmail.fill(email)
+  61 |             await this.CmobileNum.fill(mnumber)
+  62 |             await this.CNotes.fill(notes)
+  63 |             await this.ClickAddBtn.click()
+  64 |             await this.ClickconfirmOk.waitFor()
+  65 |             await this.ClickconfirmOk.click()
+  66 |             await this.clickAlertOk.waitFor()
+  67 |             await this.clickAlertOk.click()
+  68 |             await this.searchPanel.waitFor()
+  69 |             if(!await this.searchTextBox.isVisible())
+  70 |                 await this.searchPanel.click()
+  71 |                 await this.searchTextBox.clear()
+  72 |                 await this.searchTextBox.fill(Ex_num2)
+  73 |             const Act_Num = await this.CustomerTable.innerText()
+  74 |                 if((await Act_Num).match(Ex_num2))
+  75 |                     {
+  76 |                         console.log(`Customer Number Found in table ${Ex_num2}  ${Act_Num}`)
+  77 |                     }
+  78 |                  else
+  79 |                     {
+  80 |                          console.log(`Customer Number not Found in table ${Ex_num2}  ${Act_Num}`)
+  81 |                     }           
+  82 |         }
+  83 | }
+  84 | 
+```
